@@ -10,7 +10,6 @@ import voiidstudios.dynamic.commands.*;
 import voiidstudios.dynamic.config.ConfigManager;
 import voiidstudios.dynamic.config.PlaceholdersFolderManager;
 import voiidstudios.dynamic.listeners.PlayerListener;
-import voiidstudios.dynamic.log.DAPILogHandler;
 import voiidstudios.dynamic.log.DAPILogger;
 import voiidstudios.dynamic.log.JavaLoggerImpl;
 import voiidstudios.dynamic.managers.MessagesManager;
@@ -18,6 +17,8 @@ import voiidstudios.dynamic.update.UpdateChecker;
 import voiidstudios.dynamic.update.UpdateDownloaderGithub;
 import voiidstudios.dynamic.update.UpdateCheckerResult;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -54,7 +55,6 @@ public final class DynamicAPIPlugin extends JavaPlugin {
         configManager.load();
 
         dapiLogger = new DAPILogger(new JavaLoggerImpl(getLogger()), true);
-        DAPILogHandler.install(getLogger());
 
         messagesManager = new MessagesManager(this, configManager.getLanguage(), dapiLogger);
 
@@ -64,6 +64,8 @@ public final class DynamicAPIPlugin extends JavaPlugin {
         messagesManager.console("&a | |_| &2/ ___ \\|  __/| |    &8Running on &f" + serverName + " (ID: " + cleanId + ", MC: " + cleanVersion + ")");
         messagesManager.console("&a |____&2/_/   \\_\\_|  |___|");
         messagesManager.console("");
+
+        dateText();
 
         dapiLogger.info("[-] Loading extensions...");
 
@@ -106,7 +108,6 @@ public final class DynamicAPIPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        DAPILogHandler.uninstall(getLogger());
         dapiLogger.info("[-] Unregistering the placeholders...");
         unregisterAll();
         dapiLogger.success("DynamicAPI disabled! Have a nice day ;)");
@@ -264,5 +265,65 @@ public final class DynamicAPIPlugin extends JavaPlugin {
         String[] shifted = new String[args.length - 1];
         System.arraycopy(args, 1, shifted, 0, args.length - 1);
         return shifted;
+    }
+
+    private void dateText() { // totally useless, but cute :3
+        LocalDate date = LocalDate.now();
+
+        switch (date.getMonth()) {
+            case JANUARY:
+                if (date.getDayOfMonth() == 1) {
+                    messagesManager.console("&eHappy New Year! <3");
+                    messagesManager.console(""); return;
+                }
+                break;
+            case FEBRUARY:
+                if (date.getDayOfMonth() == 29) {
+                    messagesManager.console("&eA leap year? owo");
+                    messagesManager.console(""); return;
+                }
+                break;
+            case MARCH:
+                if (date.getDayOfMonth() == 13) {
+                    messagesManager.console("&eHappy Birthday MaxxVoiid!");
+                    messagesManager.console(""); return;
+                }
+                break;
+            case APRIL:
+                if (date.getDayOfMonth() == 1) {
+                    messagesManager.console("&eApril Fools! Don't trust anything today >:3");
+                    messagesManager.console(""); return;
+                }
+                break;
+            case JUNE:
+                messagesManager.console("&eHappy Pride Month!");
+                messagesManager.console(""); return;
+            case OCTOBER:
+                if (date.getDayOfMonth() == 31) {
+                    messagesManager.console("&eOoOohh, it's Halloween today >:3");
+                    messagesManager.console(""); return;
+                }
+                break;
+            case DECEMBER:
+                if (date.getDayOfMonth() > 23 && date.getDayOfMonth() < 27) {
+                    messagesManager.console("&eHo ho ho, Merry Christmas!");
+                    messagesManager.console(""); return;
+                }
+                break;
+            default:
+                break;
+        }
+
+        int hour = LocalTime.now().getHour();
+        if (hour >= 6 && hour < 12) {
+            messagesManager.console("&eGood morning! Hope your server has a great day :)");
+        } else if (hour >= 12 && hour < 19) {
+            messagesManager.console("&eGood afternoon! Keep up the good work :D");
+        } else if (hour >= 19 && hour < 22) {
+            messagesManager.console("&eGood evening! Wrapping up for the day? :b");
+        } else {
+            messagesManager.console("&eLate night gaming session? Don't forget to sleep! :p");
+        }
+        messagesManager.console("");
     }
 }

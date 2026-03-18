@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'voiidstudios.dynamic'
-version = '0.9.1h'
+version = '0.9.1n'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -37,6 +37,7 @@ dependencies {
 }
 
 processResources {
+    inputs.property('version', version)
     expand('version': version)
 }
 

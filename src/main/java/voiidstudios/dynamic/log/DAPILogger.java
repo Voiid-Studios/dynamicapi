@@ -94,7 +94,12 @@ public class DAPILogger {
             } else {
                 levelColor = "";
             }
-            message = "§6[§aDynamicAPI§6] §r" + levelColor + message + "§r";
+
+            if (level == EpicLogLevel.WARNING || level == EpicLogLevel.SEVERE) {
+                message = levelColor + message + "§r";
+            } else {
+                message = "§6[§aDynamicAPI§6] §r" + levelColor + message + "§r";
+            }
         }
         return ANSIConverter.convertToAnsi(message);
     }
