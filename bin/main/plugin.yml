@@ -1,0 +1,32 @@
+name: DynamicAPI
+main: voiidstudios.dynamic.DynamicAPIPlugin
+version: '${version}'
+author: ["Voiid Studios"]
+api-version: '1.13'
+description: 'Create the PlaceholderAPI placeholders you never found. Custom, quickly and easily!'
+depend:
+  - PlaceholderAPI
+commands:
+  dynamicapi:
+    description: 'DynamicAPI Command'
+    aliases: ['dapi']
+permissions:
+  dynamicapi.*:
+    description: 'Ability to use all DynamicAPI commands'
+    children:
+      dynamicapi.admin: true
+  dynamicapi.admin:
+    description: 'Ability to use all DynamicAPI commands'
+    children:
+      dynamicapi.reload: true
+      dynamicapi.list: true
+      dynamicapi.version: true
+  dynamicapi.reload:
+    default: op
+    description: 'Allows you to reload DynamicAPI and its placeholders'
+  dynamicapi.list:
+    default: op
+    description: 'Allows you to list all active placeholders'
+  dynamicapi.version:
+    default: op
+    description: 'Allows you to view the version of DynamicAPI installed'

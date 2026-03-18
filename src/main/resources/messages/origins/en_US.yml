@@ -1,0 +1,41 @@
+# ====== GENERIC COMMANDS ======
+command:
+  reload: "&aConfig Reloaded."
+  no_permissions: "&cYou don't have permissions to use this command."
+  unknown: "&cUnknown subcommand. Use /dapi help."
+  help:
+    header: "&7Running &aDynamicAPI &bv%VERSION%"
+    lines:
+      - "&2> &3/dapi help &7- Shows this message."
+      - "&2> &3/dapi reload &7- Reload config & placeholders."
+      - "&2> &3/dapi list &7- List all active placeholders."
+      - "&2> &3/dapi enable &b<id> &7- Enable a placeholder."
+      - "&2> &3/dapi disable &b<id> &7- Disable a placeholder."
+  enable:
+    usage: "&cUse: /dapi enable <id>"
+    not_found: "&cPlaceholder &e%ID% &cdoes not exist."
+    success: "&aPlaceholder &e%ID% &aenabled."
+  disable:
+    usage: "&cUse: /dapi disable <id>"
+    not_found: "&cPlaceholder &e%ID% &cdoes not exist."
+    success: "&aPlaceholder &e%ID% &adisabled."
+
+# ====== PLACEHOLDERS LIST ======
+list:
+  title: "&eActive placeholders (%PLACEHOLDERS%):"
+  entry: "&3> %STATUSCOLOR%%PREFIX%_%PATTERN% &7[%ID%]"
+  no_placeholders: "&cYou don't have any placeholders, learn how to create your own placeholders by clicking the info icon!"
+  enabled: "Enabled"
+  disabled: "Disabled"
+  hint:
+    - "Learn how to create your own PlaceholderAPI placeholders"
+    - "without needing to know Java, thanks to DynamicAPI!"
+    - ""
+    - "Click to learn how to create your own placeholders."
+
+# ====== SYSTEM ======
+system:
+  update:
+    available:
+      - "&aA stable update for DynamicAPI &b(%LATEST%) &ais available."
+      - "&aYou can download it at: &e%UPDATELINK%"

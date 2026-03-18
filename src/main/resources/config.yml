@@ -1,0 +1,9 @@
+Config:
+  # Change the language of DAPI within the game. The list of available languages is located at: /messages
+  language: 'en_US'
+  # The plugin will attempt to auto-update when it finds a new version.
+  auto_update: true
+  # The plugin will send an update notification when it finds a new version if auto-update is disabled.
+  update_notification: true
+  # Contribute to our statistics anonymously with bStats. More information: https://bstats.org/
+  bstats_metrics: true

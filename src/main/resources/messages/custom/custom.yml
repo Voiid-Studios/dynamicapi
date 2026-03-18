@@ -1,0 +1,68 @@
+# ============================================================
+#  DynamicAPI - Custom Messages Override
+# ------------------------------------------------------------
+#  Override ANY message without touching the original files.
+#
+#  Priority order:
+#     1. custom.yml           (highest priority)
+#     2. Selected language    (e.g. es_ES.yml)
+#     3. Default en_US.yml    (en_US.yml)
+#
+#  To override a message, copy the key and change the value.
+#  Reload with: /dapi reload
+#
+#  Example:
+#     command:
+#       reload: "&aPlaceholders reloaded successfully!"
+#
+#  Do NOT delete this file. Leave it empty if you don't want
+#  to override anything.
+# ============================================================
+
+
+# ============================================================
+# Uncomment and customize any of these as needed ;)
+# ============================================================
+#
+# command:
+#   reload: "&aConfig Reloaded."
+#   no_permissions: "&cYou don't have permissions to use this command."
+#   unknown: "&cUnknown subcommand. Use /dapi help."
+#   help:
+#     header: "&7Running &aDynamicAPI &bv%VERSION%"
+#     lines:
+#       - "&2> &3/dapi help &7- Shows this message."
+#       - "&2> &3/dapi reload &7- Reload config & placeholders."
+#       - "&2> &3/dapi list &7- List all active placeholders."
+#   enable:
+#     usage: "&cUse: /dapi enable <id>"
+#     not_found: "&cPlaceholder &e%ID% &cdoes not exist."
+#     success: "&aPlaceholder &e%ID% &aenabled."
+#   disable:
+#     usage: "&cUse: /dapi disable <id>"
+#     not_found: "&cPlaceholder &e%ID% &cdoes not exist."
+#     success: "&aPlaceholder &e%ID% &adisabled."
+#
+# list:
+#   title: "&eActive placeholders (%PLACEHOLDERS%):"
+#   entry: "&3> %STATUSCOLOR%%PREFIX%_%PATTERN% &7[%ID%]"
+#   no_placeholders: "&cYou don't have any placeholders, learn how to create your own placeholders by clicking the info icon!"
+#   enabled: "Enabled"
+#   disabled: "Disabled"
+#   hint:
+#     - "Learn how to create your own PlaceholderAPI placeholders"
+#     - "without needing to know Java, thanks to DynamicAPI!"
+#     - ""
+#     - "Click to learn how to create your own placeholders."
+#
+# system:
+#   update:
+#     available:
+#       - "&aA stable update for DynamicAPI &b(%LATEST%) &ais available."
+#       - "&aYou can download it at: &e%UPDATELINK%"
+
+
+# ==z=========================================================
+#  Add ONLY the messages you want to override.
+#  Leave the file empty to use default translations.
+# ============================================================

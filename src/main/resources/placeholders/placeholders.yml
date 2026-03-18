@@ -1,0 +1,76 @@
+# ============================================================
+#  DynamicAPI — placeholders.yml
+# ============================================================
+#  Puedes crear multiples archivos .yml en esta carpeta.
+#  Cualquier archivo que tenga la seccion "Placeholders:"
+#  sera cargado automaticamente por DynamicAPI.
+#
+#  Recarga con: /dapi reload
+# ============================================================
+
+Placeholders:
+
+  # ----------------------------------------------------------
+  # %teaminfo_size_<team>%
+  # Numero de entradas del team especificado
+  # Ej: %teaminfo_size_rojo% -> 3
+  # ----------------------------------------------------------
+  team_size:
+    enable: true
+    prefix: 'teaminfo'
+    pattern: 'size_<team>'
+    requires_player: false
+    context:
+      team: 'scoreboard.getTeam(<team>)'
+    variables:
+      result: 'team.size'
+    returns: '{result}'
+    fallback: '0'
+
+  # ----------------------------------------------------------
+  # %teaminfo_exists_<team>%
+  # true/false si el team existe
+  # ----------------------------------------------------------
+  team_exists:
+    enable: true
+    prefix: 'teaminfo'
+    pattern: 'exists_<team>'
+    requires_player: false
+    context:
+      team: 'scoreboard.getTeam(<team>)'
+    variables:
+      result: 'team.name'
+    returns: 'true'
+    fallback: 'false'
+
+  # ----------------------------------------------------------
+  # %myteam_size%
+  # Size del team del jugador que evalua el placeholder
+  # ----------------------------------------------------------
+  my_team_size:
+    enable: true
+    prefix: 'myteam'
+    pattern: 'size'
+    requires_player: true
+    context:
+      team: 'scoreboard.getPlayerTeam(player)'
+    variables:
+      result: 'team.size'
+    returns: '{result}'
+    fallback: '0'
+
+  # ----------------------------------------------------------
+  # %myteam_name%
+  # Nombre del team del jugador que evalua el placeholder
+  # ----------------------------------------------------------
+  my_team_name:
+    enable: true
+    prefix: 'myteam'
+    pattern: 'name'
+    requires_player: true
+    context:
+      team: 'scoreboard.getPlayerTeam(player)'
+    variables:
+      result: 'team.name'
+    returns: '{result}'
+    fallback: 'none'

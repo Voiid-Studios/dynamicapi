@@ -1,0 +1,54 @@
+# ============================================================
+#  DynamicAPI — more_placeholders.yml
+# ============================================================
+#  Este archivo es un ejemplo extra. Puedes crear tantos
+#  archivos .yml como quieras en esta carpeta.
+#  Todos los que tengan "Placeholders:" seran cargados.
+# ============================================================
+
+Placeholders:
+
+  # ----------------------------------------------------------
+  # %playerinfo_health%
+  # Vida actual del jugador
+  # ----------------------------------------------------------
+  player_health:
+    enable: false
+    prefix: 'playerinfo'
+    pattern: 'health'
+    requires_player: true
+    context: {}
+    variables:
+      result: 'player.health'
+    returns: '{result}'
+    fallback: '0'
+
+  # ----------------------------------------------------------
+  # %playerinfo_level%
+  # Nivel de XP del jugador
+  # ----------------------------------------------------------
+  player_level:
+    enable: false
+    prefix: 'playerinfo'
+    pattern: 'level'
+    requires_player: true
+    context: {}
+    variables:
+      result: 'player.level'
+    returns: '{result}'
+    fallback: '0'
+
+  # ----------------------------------------------------------
+  # %playerinfo_food%
+  # Nivel de comida del jugador
+  # ----------------------------------------------------------
+  player_food:
+    enable: false
+    prefix: 'playerinfo'
+    pattern: 'food'
+    requires_player: true
+    context: {}
+    variables:
+      result: 'player.foodLevel'
+    returns: '{result}'
+    fallback: '0'
