@@ -64,8 +64,6 @@ nav:
     - users/installation.md
     - users/commands.md
     - users/creating-placeholders.md
-  - Dev Guides:
-    - developers/index.md
   - faq.md
 
 extra_css:

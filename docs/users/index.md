@@ -1,45 +1,37 @@
 ---
-description: Pages aimed at server owners who want to utilize PlaceholderAPI.
+hide:
+  - navigation
+  - toc
 ---
 
-# User Guides
+# Welcome to DynamicAPI
 
-The pages listed under this section are meant for server owners who want to use PlaceholderAPI.
+![dynamicapi_logo](assets/img/wiki-logo.png){ align="center" }
 
-----
+**DynamicAPI** is a [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI) addon that lets you create your own custom placeholders directly from YAML files — no Java knowledge required.
+
+Instead of searching through eCloud's thousands of expansions and never finding exactly what you need, DynamicAPI lets you define your own placeholders in minutes.
+
+---
 
 <div class="grid cards hide-list" markdown>
 
--   ### Commands
-    
-    ----
-    
-    List of all available commands in PlaceholderAPI.
-    
-    - [:octicons-chevron-right-16: Go to Page](commands.md)
+-   ### :material-account-file-text: User Guides
 
--   ### Using Placeholders
-    
     ----
-    
-    User Guide on how to use placeholders in a plugin.
-    
-    - [:octicons-chevron-right-16: Go to Page](using-placeholders.md)
 
--   ### Placeholder List
-    
-    ----
-    
-    Community-curated lists of available Placeholder Expansions and their placeholders for the Minecraft and Hytale versions of PlaceholderAPI.
-    
-    - [:octicons-chevron-right-16: Go to Page](placeholder-list/index.md)
+    Everything you need to get started with DynamicAPI as a server admin.
 
--   ### Plugins using PlaceholderAPI
-    
+    - [:octicons-chevron-right-16: Installation](users/installation.md)
+    - [:octicons-chevron-right-16: Commands](users/commands.md)
+    - [:octicons-chevron-right-16: Creating Placeholders](users/creating-placeholders.md)
+
+-   ### :material-chat-question: FAQ
+
     ----
-    
-    List of Plugins that support PlaceholderAPI and/or provide their own placeholders to use.
-    
-    - [:octicons-chevron-right-16: Go to Page](plugins-using-placeholderapi/index.md)
+
+    Frequently asked questions and their answers.
+
+    - [:octicons-chevron-right-16: Go to Page](faq.md)
 
 </div>
