@@ -1,0 +1,112 @@
+site_name: DynamicAPI Wiki
+site_description: Wiki of the DynamicAPI plugin for PlaceholderAPI.
+site_author: Voiid Studios
+
+site_url: 'https://voiid-studios.github.io/dynamicapi'
+
+repo_name: Voiid-Studios/dynamicapi
+repo_url: https://github.com/Voiid-Studios/dynamicapi
+
+theme:
+  name: material
+  custom_dir: '.theme'
+  logo: assets/img/favicons/android-chrome-512x512.png
+  icon:
+    repo: octicons/mark-github-16
+    admonition:
+      note: octicons/pencil-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/rocket-16
+      success: octicons/check-circle-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/comment-16
+  palette:
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      primary: green
+      accent: light green
+      toggle:
+        icon: octicons/sun-24
+        name: 'Switch to dark theme'
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      primary: black
+      accent: green
+      toggle:
+        icon: octicons/moon-24
+        name: 'Switch to light theme'
+  features:
+    - navigation.indexes
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - content.tooltips
+    - content.code.copy
+
+extra:
+  social:
+    - icon: simple/modrinth
+      link: https://modrinth.com/plugin/dynamicapi
+    - icon: simple/github
+      link: https://github.com/Voiid-Studios/dynamicapi
+
+nav:
+  - index.md
+  - User Guides:
+    - users/index.md
+    - users/installation.md
+    - users/commands.md
+    - users/creating-placeholders.md
+  - Dev Guides:
+    - developers/index.md
+  - faq.md
+
+extra_css:
+  - assets/stylesheets/link-icons.css
+  - assets/stylesheets/styling.css
+
+markdown_extensions:
+  - attr_list
+  - toc:
+      permalink: true
+  - meta
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.magiclink:
+      repo_url_shortener: true
+      repo_url_shorthand: true
+      provider: github
+      user: Voiid-Studios
+      repo: dynamicapi
+      normalize_issue_symbols: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.blocks.admonition:
+      types:
+        - note
+        - abstract
+        - info
+        - tip
+        - success
+        - question
+        - warning
+        - failure
+        - danger
+        - bug
+        - example
+        - quote
+  - pymdownx.blocks.details
+  - pymdownx.blocks.tab:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.tasklist
