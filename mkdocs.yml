@@ -29,15 +29,15 @@ theme:
   palette:
     - media: '(prefers-color-scheme: light)'
       scheme: default
-      primary: green
-      accent: light green
+      primary: custom
+      accent: custom
       toggle:
         icon: octicons/sun-24
         name: 'Switch to dark theme'
     - media: '(prefers-color-scheme: dark)'
       scheme: slate
-      primary: black
-      accent: green
+      primary: custom
+      accent: custom
       toggle:
         icon: octicons/moon-24
         name: 'Switch to light theme'

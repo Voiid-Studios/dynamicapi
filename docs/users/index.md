@@ -1,30 +1,32 @@
----
-hide:
-  - navigation
-  - toc
----
+# User Guides
 
-# Welcome to DynamicAPI
-
-![dynamicapi_logo](assets/img/wiki-logo.png){ align="center" }
-
-**DynamicAPI** is a [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI) addon that lets you create your own custom placeholders directly from YAML files — no Java knowledge required.
-
-Instead of searching through eCloud's thousands of expansions and never finding exactly what you need, DynamicAPI lets you define your own placeholders in minutes.
-
----
+Welcome to the DynamicAPI user guides. These pages cover everything you need to know to install, configure, and use DynamicAPI on your server.
 
 <div class="grid cards hide-list" markdown>
 
--   ### :material-account-file-text: User Guides
+-   ### :material-download: Installation
 
     ----
 
-    Everything you need to get started with DynamicAPI as a server admin.
+    How to install DynamicAPI on your server.
 
-    - [:octicons-chevron-right-16: Installation](users/installation.md)
-    - [:octicons-chevron-right-16: Commands](users/commands.md)
-    - [:octicons-chevron-right-16: Creating Placeholders](users/creating-placeholders.md)
+    [:octicons-chevron-right-16: Jump to Page](installation)
+
+-   ### :material-console: Commands
+
+    ----
+
+    All available commands and their usage.
+
+    [:octicons-chevron-right-16: Jump to Page](commands)
+
+-   ### :material-code-braces: Creating Placeholders
+
+    ----
+
+    Learn how to create your own placeholders using YAML.
+
+    [:octicons-chevron-right-16: Jump to Page](creating-placeholders)
 
 -   ### :material-chat-question: FAQ
 
@@ -32,6 +34,6 @@ Instead of searching through eCloud's thousands of expansions and never finding 
 
     Frequently asked questions and their answers.
 
-    - [:octicons-chevron-right-16: Go to Page](faq.md)
+    [:octicons-chevron-right-16: Jump to Page](../faq)
 
 </div>

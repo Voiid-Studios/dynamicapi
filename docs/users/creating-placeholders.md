@@ -10,9 +10,9 @@ All placeholder files go inside the `plugins/DynamicAPI/placeholders/` folder. Y
 
 ```
 plugins/DynamicAPI/placeholders/
-├── placeholders.yml        ← loaded automatically
-├── more_placeholders.yml   ← also loaded automatically
-└── my_custom_ones.yml      ← you can add as many as you want
+├── placeholders.yml        <- loaded automatically
+├── more_placeholders.yml   <- also loaded automatically
+└── my_custom_ones.yml      <- you can add as many as you want
 ```
 
 After editing any file, use `/dapi reload` to apply changes without restarting.
@@ -82,8 +82,8 @@ You can use `<varname>` in your pattern to capture part of the placeholder name 
 
 For example, with `pattern: 'size_<team>'`:
 
-- `%teaminfo_size_rojo%` → captures `team = "rojo"`
-- `%teaminfo_size_azul%` → captures `team = "azul"`
+- `%dapi_team_size_voiid%` -> captures `team = "voiid"`
+- `%dapi_team_size_studios%` -> captures `team = "studios"`
 
 You can then use `<team>` in your expressions.
 
@@ -99,25 +99,32 @@ Intermediate variables in a multi-variable pattern cannot contain underscores in
 
 ## Examples
 
+///// note |
+Click the :material-plus-circle: icons in the code blocks below for more information.
+/////
+
 ### Scoreboard team size
 
 Returns the number of entries in a scoreboard team.
 
-```yaml
-team_size:
+```{ .yaml .annotate }
+dapi_team_size:
   enable: true
-  prefix: 'teaminfo'
-  pattern: 'size_<team>'
+  prefix: 'dapi'
+  pattern: 'team_size_<team>'
   requires_player: false
   context:
-    team: 'scoreboard.getTeam(<team>)'
+    team: 'scoreboard.getTeam(<team>)' # (1)
   variables:
-    result: 'team.size'
+    result: 'team.size' # (2)
   returns: '{result}'
   fallback: '0'
 ```
 
-**Usage:** `%teaminfo_size_rojo%` → `3`
+1.  We retrieve the Team object using the scoreboard with the team name as the argument: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/scoreboard/Scoreboard.html
+2.  We get the int value of the team's size using "team.size" because we have obtained the Team object: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/scoreboard/Team.html
+
+**Usage:** `%dapi_team_size_voiid%` -> `3`
 
 ---
 
@@ -125,21 +132,25 @@ team_size:
 
 Returns `true` or `false` depending on whether a team exists.
 
-```yaml
-team_exists:
+```{ .yaml .annotate }
+dapi_team_exists:
   enable: true
-  prefix: 'teaminfo'
-  pattern: 'exists_<team>'
+  prefix: 'dapi'
+  pattern: 'team_exists_<team>'
   requires_player: false
   context:
-    team: 'scoreboard.getTeam(<team>)'
+    team: 'scoreboard.getTeam(<team>)' # (1)
   variables:
-    result: 'team.name'
-  returns: 'true'
+    result: 'team.name' # (2)
+  returns: 'true' # (3)
   fallback: 'false'
 ```
 
-**Usage:** `%teaminfo_exists_azul%` → `true`
+1.  Fetches the Team object. If the team doesn't exist, `getTeam()` returns `null` and the fallback is triggered.
+2.  We access `team.name` just to verify the object is not null. The actual value is discarded.
+3.  If we reach `returns`, it means the team exists — so we always return the literal `"true"`. If anything was null, the `fallback: 'false'` would have been returned instead.
+
+**Usage:** `%dapi_team_exists_studios%` -> `true`
 
 ---
 
@@ -147,21 +158,23 @@ team_exists:
 
 Returns the name of the team the evaluating player belongs to.
 
-```yaml
-my_team_name:
+```{ .yaml .annotate }
+dapi_myteam_name:
   enable: true
-  prefix: 'myteam'
-  pattern: 'name'
+  prefix: 'dapi'
+  pattern: 'myteam_name'
   requires_player: true
   context:
-    team: 'scoreboard.getPlayerTeam(player)'
+    team: 'scoreboard.getPlayerTeam(player)' # (1)
   variables:
     result: 'team.name'
   returns: '{result}'
   fallback: 'none'
 ```
 
-**Usage:** `%myteam_name%` → `rojo`
+1.  `getPlayerTeam()` returns the team the player belongs to, or `null` if they are not in any team. In that case the fallback `none` is returned: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/scoreboard/Scoreboard.html
+
+**Usage:** `%dapi_myteam_name%` -> `voiid`
 
 ---
 
@@ -169,39 +182,142 @@ my_team_name:
 
 Returns the current health of the player evaluating the placeholder.
 
-```yaml
-player_health:
+```{ .yaml .annotate }
+dapi_player_health:
   enable: true
-  prefix: 'playerinfo'
-  pattern: 'health'
+  prefix: 'dapi'
+  pattern: 'player_health'
   requires_player: true
   context: {}
   variables:
-    result: 'player.health'
+    result: 'player.health' # (1)
   returns: '{result}'
   fallback: '0'
 ```
 
-**Usage:** `%playerinfo_health%` → `18.0`
+1.  Calls `player.getHealth()` which returns a `double` between `0.0` and the player's max health: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/Damageable.html
+
+**Usage:** `%dapi_player_health%` -> `18.0`
 
 ---
 
 ### Player XP level
 
-```yaml
-player_level:
+```{ .yaml .annotate }
+dapi_player_level:
   enable: true
-  prefix: 'playerinfo'
-  pattern: 'level'
+  prefix: 'dapi'
+  pattern: 'player_level'
   requires_player: true
   context: {}
   variables:
-    result: 'player.level'
+    result: 'player.level' # (1)
   returns: '{result}'
   fallback: '0'
 ```
 
-**Usage:** `%playerinfo_level%` → `42`
+1.  Calls `player.getLevel()` which returns the player's current experience level as an `int`: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/Player.html
+
+**Usage:** `%dapi_player_level%` -> `42`
+
+---
+
+### Player's current world name
+
+Returns the name of the world the evaluating player is currently in.
+
+```{ .yaml .annotate }
+dapi_player_world:
+  enable: true
+  prefix: 'dapi'
+  pattern: 'player_world'
+  requires_player: true
+  context:
+    world: 'player.getWorld()' # (1)
+  variables:
+    result: 'world.name' # (2)
+  returns: '{result}'
+  fallback: 'unknown'
+```
+
+1.  Retrieves the `World` object the player is currently in: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/Entity.html
+2.  Calls `world.getName()` which returns the world's name as defined in the server configuration.
+
+**Usage:** `%dapi_player_world%` -> `world_nether`
+
+---
+
+### Online players and server capacity
+
+Returns the number of players currently online, and the maximum player slots.
+
+```{ .yaml .annotate }
+dapi_server_online:
+  enable: true
+  prefix: dapi
+  pattern: server_online
+  requires_player: false
+  context: {}
+  variables:
+    result: 'server.onlinePlayers.size' # (1)
+  returns: '{result}'
+  fallback: '0'
+
+dapi_server_max_players:
+  enable: true
+  prefix: dapi
+  pattern: server_maxplayers
+  requires_player: false
+  context: {}
+  variables:
+    result: 'server.maxPlayers' # (2)
+  returns: '{result}'
+  fallback: '0'
+```
+
+1.  Calls `server.getOnlinePlayers()` which returns a `Collection<Player>`, then `.size()` on that collection to get the count.
+2.  Calls `server.getMaxPlayers()` which returns the player slot limit configured in `server.properties`.
+
+**Usage:** `%dapi_server_online%` -> `12` · `%dapi_server_max_players%` -> `20`
+
+---
+
+### Player balance (EssentialsX)
+
+Returns the economy balance of the evaluating player using EssentialsX.
+
+/// admonition | Requirement
+    type: warning
+
+This placeholder requires [EssentialsX](https://essentialsx.net) to be installed on your server.
+///
+
+```{ .yaml .annotate }
+dapi_essentials_balance:
+  enable: true
+  prefix: 'dapi'
+  pattern: 'eco_balance'
+  requires_player: true
+  context:
+    ess: 'server.getPluginManager().getPlugin("Essentials")' # (1)
+    user: 'ess.getUser(player)' # (2)
+  variables:
+    result: 'user.money' # (3)
+  returns: '{result}'
+  fallback: '0'
+```
+
+1.  Retrieves the EssentialsX plugin instance via the Bukkit PluginManager. If EssentialsX is not installed this returns `null` and the fallback is triggered.
+2.  Fetches the EssentialsX `User` object for the evaluating player: https://jd.essentialsx.net/
+3.  Calls `user.getMoney()` which returns the player's balance as a `BigDecimal`. Since `getPlugin()` returns a generic `Plugin` object, DynamicAPI accesses this through reflection — no direct API dependency needed.
+
+**Usage:** `%dapi_eco_balance%` -> `15420.50`
+
+/// admonition | Note
+    type: note
+
+Since `getPlugin()` returns a generic `Plugin` object, DynamicAPI accesses `getUser()` and `getMoney()` through reflection. As long as EssentialsX is loaded and the method signatures remain the same, this works without needing a direct API dependency.
+///
 
 ---
 

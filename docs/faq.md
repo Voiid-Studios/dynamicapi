@@ -6,7 +6,7 @@ Frequently asked questions about DynamicAPI.
 
 ### Do I need to know Java to use DynamicAPI?
 
-Not at all. DynamicAPI is specifically designed so that anyone who can read Bukkit's [JavaDocs](https://jd.papermc.io/paper/1.21/) can create placeholders using simple YAML expressions — no programming experience required.
+Not at all. DynamicAPI is specifically designed so that anyone who can read [Bukkit's JavaDocs](https://hub.spigotmc.org/javadocs/bukkit/index.html) can create placeholders using simple YAML expressions — no programming experience required.
 
 ---
 
@@ -39,14 +39,6 @@ Use `/dapi list` to confirm the placeholder is registered, and double-check your
 ### Can I have multiple placeholder files?
 
 Yes. You can create as many `.yml` files as you want inside the `plugins/DynamicAPI/placeholders/` folder. Any file containing a `Placeholders:` section will be loaded automatically on startup or after `/dapi reload`.
-
----
-
-### Does DynamicAPI support Folia?
-
-Not at the moment. DynamicAPI is compatible with Spigot, Paper, and Purpur.
-
----
 
 ### Can I suggest a feature or report a bug?
 

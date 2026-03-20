@@ -5,7 +5,7 @@ All DynamicAPI commands use the `/dapi` alias (or `/dynamicapi`).
 /// admonition | Permissions
     type: info
 
-All commands require the `dynamicapi.admin` permission, which is granted to server operators by default.
+All commands require the `dynamicapi.admin` permission, which is granted to server OPs by default.
 ///
 
 ---
@@ -15,7 +15,7 @@ All commands require the `dynamicapi.admin` permission, which is granted to serv
 ### `/dapi help`
 Shows all available commands.
 
-**Permission:** none (available to everyone)
+**Permission:** `dynamicapi.help`
 
 ---
 
@@ -72,6 +72,7 @@ Disables a placeholder by its internal ID. This edits the corresponding `.yml` f
 |---|---|---|
 | `dynamicapi.*` | All DynamicAPI permissions | ❌ |
 | `dynamicapi.admin` | All admin permissions | OP |
+| `dynamicapi.help` | Use `/dapi help` | OP |
 | `dynamicapi.reload` | Use `/dapi reload` | OP |
 | `dynamicapi.list` | Use `/dapi list` | OP |
 | `dynamicapi.enable` | Use `/dapi enable` | OP |

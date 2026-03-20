@@ -8,7 +8,7 @@ Before installing DynamicAPI, make sure your server meets the following requirem
     type: info
 
 - **Minecraft version:** 1.8 or later
-- **Server software:** Spigot, Paper, or Purpur (not CraftBukkit)
+- **Server software:** Spigot, Paper or forks (In most cases, if PlaceholderAPI works on your server, that means DynamicAPI should work as well)
 - **Dependency:** [PlaceholderAPI](https://www.spigotmc.org/resources/6245/) must be installed
 ///
 
@@ -48,10 +48,14 @@ The `config.yml` file contains the main settings for DynamicAPI:
 
 ```yaml
 Config:
-  language: 'en_US'           # Language of the plugin messages
-  update_notification: true   # Notify admins when a new update is available
-  auto_update: false          # Automatically download and install updates
-  bstats_metrics: true        # Send anonymous usage statistics to bStats
+  # Change the language of DAPI within the game. The list of available languages is located at: plugins/DynamicAPI/messages
+  language: 'en_US'
+  # The plugin will attempt to auto-update when it finds a new version.
+  auto_update: true
+  # The plugin will send an update notification when it finds a new version if auto-update is disabled.
+  update_notification: true
+  # Contribute to our statistics anonymously with bStats. More information: https://bstats.org/
+  bstats_metrics: true
 ```
 
 ---
