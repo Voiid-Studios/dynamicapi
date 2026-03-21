@@ -28,7 +28,7 @@ public final class HelpCommand implements CommandHandler {
     }
 
     @Override public List<String> tabComplete(CommandSender sender, String[] args) { return Collections.emptyList(); }
-    @Override public String getPermission() { return ""; }
+    @Override public String getPermission() { return "dynamicapi.help"; }
     @Override public String getName() { return "help"; }
     @Override public String getDescription() { return "Show this help message"; }
 }

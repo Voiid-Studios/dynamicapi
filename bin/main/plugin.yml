@@ -6,6 +6,7 @@ api-version: '1.13'
 description: 'Create the PlaceholderAPI placeholders you never found. Custom, quickly and easily!'
 depend:
   - PlaceholderAPI
+folia-supported: true
 commands:
   dynamicapi:
     description: 'DynamicAPI Command'
@@ -18,9 +19,13 @@ permissions:
   dynamicapi.admin:
     description: 'Ability to use all DynamicAPI commands'
     children:
+      dynamicapi.help: true
       dynamicapi.reload: true
       dynamicapi.list: true
       dynamicapi.version: true
+  dynamicapi.help:
+    default: op
+    description: 'Allows you to view help information for DynamicAPI'
   dynamicapi.reload:
     default: op
     description: 'Allows you to reload DynamicAPI and its placeholders'

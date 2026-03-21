@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 public final class ListCommand implements CommandHandler {
-    private static final String DOCS_URL = "https://github.com/Voiid-Studios/dynamicapi/wiki";
+    private static final String DOCS_URL = "https://voiid-studios.github.io/dynamicapi/users/creating-placeholders/";
 
     private final DynamicAPIPlugin plugin;
 

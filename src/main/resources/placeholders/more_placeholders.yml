@@ -1,16 +1,15 @@
 # ============================================================
-#  DynamicAPI — more_placeholders.yml
+#  DynamicAPI More Placeholders
 # ============================================================
-#  Este archivo es un ejemplo extra. Puedes crear tantos
-#  archivos .yml como quieras en esta carpeta.
-#  Todos los que tengan "Placeholders:" seran cargados.
+#  This is an extra example file. You can create as many
+#  .yml files as you want in this folder — any file with a
+#  "Placeholders:" section will be loaded automatically.
 # ============================================================
 
 Placeholders:
-
   # ----------------------------------------------------------
   # %playerinfo_health%
-  # Vida actual del jugador
+  # Returns the current health of the evaluating player.
   # ----------------------------------------------------------
   player_health:
     enable: false
@@ -19,13 +18,13 @@ Placeholders:
     requires_player: true
     context: {}
     variables:
-      result: 'player.health'
+      result: 'player.health'             # Calls player.getHealth() — returns a double (e.g. 18.0)
     returns: '{result}'
     fallback: '0'
 
   # ----------------------------------------------------------
   # %playerinfo_level%
-  # Nivel de XP del jugador
+  # Returns the XP level of the evaluating player.
   # ----------------------------------------------------------
   player_level:
     enable: false
@@ -34,13 +33,13 @@ Placeholders:
     requires_player: true
     context: {}
     variables:
-      result: 'player.level'
+      result: 'player.level'              # Calls player.getLevel() — returns an int
     returns: '{result}'
     fallback: '0'
 
   # ----------------------------------------------------------
   # %playerinfo_food%
-  # Nivel de comida del jugador
+  # Returns the food level of the evaluating player.
   # ----------------------------------------------------------
   player_food:
     enable: false
@@ -49,6 +48,6 @@ Placeholders:
     requires_player: true
     context: {}
     variables:
-      result: 'player.foodLevel'
+      result: 'player.foodLevel'          # Calls player.getFoodLevel() — returns an int (0-20)
     returns: '{result}'
     fallback: '0'

@@ -15,6 +15,7 @@ import voiidstudios.dynamic.log.JavaLoggerImpl;
 import voiidstudios.dynamic.managers.MessagesManager;
 import voiidstudios.dynamic.update.UpdateChecker;
 import voiidstudios.dynamic.update.UpdateDownloaderGithub;
+import voiidstudios.dynamic.utils.ServerCompatibility;
 import voiidstudios.dynamic.update.UpdateCheckerResult;
 
 import java.time.LocalDate;
@@ -67,7 +68,7 @@ public final class DynamicAPIPlugin extends JavaPlugin {
 
         dateText();
 
-        dapiLogger.info("[-] Loading extensions...");
+        dapiLogger.process("Loading expansions...");
 
         placeholdersFolderManager = new PlaceholdersFolderManager(this, dapiLogger);
         placeholdersFolderManager.setup();
@@ -76,7 +77,14 @@ public final class DynamicAPIPlugin extends JavaPlugin {
         loadAndRegisterExpansions();
 
         if (configManager.isBstatsMetrics()) {
-            new Metrics(this, 30270);
+            Metrics metrics = new Metrics(this, 30270);
+
+            metrics.addCustomChart(new Metrics.SimplePie("pAPIVersion", new java.util.concurrent.Callable<String>() {
+                public String call() {
+                    org.bukkit.plugin.Plugin papi = getServer().getPluginManager().getPlugin("PlaceholderAPI");
+                    return papi != null ? papi.getDescription().getVersion() : "unknown";
+                }
+            }));
         }
 
         getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
@@ -91,13 +99,24 @@ public final class DynamicAPIPlugin extends JavaPlugin {
         updateChecker = new UpdateChecker(getDescription().getVersion(), dapiLogger);
         updateDownloader = new UpdateDownloaderGithub(dapiLogger, updateChecker);
 
-        dapiLogger.info("[-] Checking for updates...");
+        dapiLogger.process("Checking for updates...");
 
-        getServer().getScheduler().runTaskAsynchronously(this, new Runnable() {
-            public void run() {
-                checkUpdates(updateChecker.check());
+        if (ServerCompatibility.isFolia()) {
+            try {
+                Object asyncScheduler = Bukkit.class.getMethod("getAsyncScheduler").invoke(null);
+                asyncScheduler.getClass().getMethod("runNow", org.bukkit.plugin.Plugin.class, java.util.function.Consumer.class).invoke(asyncScheduler, this, (java.util.function.Consumer<Object>) task -> {
+                    checkUpdates(updateChecker.check());
+                });
+            } catch (Exception e) {
+                dapiLogger.warning("Failed to schedule async task on Folia: " + e.getMessage());
             }
-        });
+        } else {
+            getServer().getScheduler().runTaskAsynchronously(this, new Runnable() {
+                public void run() {
+                    checkUpdates(updateChecker.check());
+                }
+            });
+        }
 
         if (Boolean.getBoolean(DAPI_LOADED_PROPERTY)) {
             sendConsoleUnstableReloadMessage();
@@ -108,7 +127,7 @@ public final class DynamicAPIPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        dapiLogger.info("[-] Unregistering the placeholders...");
+        dapiLogger.process("Unregistering the placeholders...");
         unregisterAll();
         dapiLogger.success("DynamicAPI disabled! Have a nice day ;)");
     }
@@ -137,16 +156,14 @@ public final class DynamicAPIPlugin extends JavaPlugin {
         };
 
         String prefix = RELOAD_PREFIXES[new Random().nextInt(RELOAD_PREFIXES.length)];
-        dapiLogger.warning("**************************************************************************");
-        dapiLogger.warning(prefix);
-        dapiLogger.warning("");
-        dapiLogger.warning("Server reload detected by DynamicAPI.");
-        dapiLogger.warning("This action IS NOT SUPPORTED and may therefore BREAK YOUR PLACEHOLDERS!!!");
-        dapiLogger.warning("");
-        dapiLogger.warning("YOU WILL GET NO SUPPORT FOR THE PLUGIN FOR ANY ISSUES YOU ENCOUNTER AFTER");
-        dapiLogger.warning("THE SERVER RELOAD!");
-        dapiLogger.warning("#RestartYourServerAndNeverReloadIt");
-        dapiLogger.warning("**************************************************************************");
+        dapiLogger.warning(" │  ⚠  " + prefix);
+        dapiLogger.warning(" │  ");
+        dapiLogger.warning(" │  Server reload detected by DynamicAPI.");
+        dapiLogger.warning(" │  This action IS NOT SUPPORTED and may therefore BREAK YOUR PLACEHOLDERS!!!");
+        dapiLogger.warning(" │  ");
+        dapiLogger.warning(" │  YOU WILL GET NO SUPPORT FOR THE PLUGIN FOR ANY ISSUES YOU ENCOUNTER AFTER");
+        dapiLogger.warning(" │  THE SERVER RELOAD!");
+        dapiLogger.warning(" │  #RestartYourServerAndNeverReloadIt");
     }
 
     private void checkUpdates(UpdateCheckerResult result) {
@@ -166,7 +183,7 @@ public final class DynamicAPIPlugin extends JavaPlugin {
         }
 
         if (configManager.isAutoUpdate()) {
-            dapiLogger.info("[-] Auto-update enabled. Downloading v" + latest + "...");
+            dapiLogger.process("Auto-update enabled. Downloading v" + latest + "...");
             updateDownloader.downloadUpdate();
         }
     }
@@ -206,7 +223,7 @@ public final class DynamicAPIPlugin extends JavaPlugin {
             expansion.register();
             registeredExpansions.add(expansion);
             totalEnabled += enabledCount;
-            dapiLogger.success("Registered extension '%" + e.getKey() + "%' with " + enabledCount + " placeholder(s).");
+            dapiLogger.success("Registered expansion '%" + e.getKey() + "%' with " + enabledCount + " placeholder(s).");
         }
 
         dapiLogger.success("§a" + totalEnabled + " placeholder(s) active across " + registeredExpansions.size() + " expansion(s).");

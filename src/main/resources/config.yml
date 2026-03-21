@@ -1,5 +1,5 @@
 Config:
-  # Change the language of DAPI within the game. The list of available languages is located at: /messages
+  # Change the language of DAPI within the game. The list of available languages is located at: plugins/DynamicAPI/messages
   language: 'en_US'
   # The plugin will attempt to auto-update when it finds a new version.
   auto_update: true

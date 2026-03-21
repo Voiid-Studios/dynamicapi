@@ -38,6 +38,14 @@ public class DAPILogger {
     public void info(String message, Throwable thrown) {
         log(EpicLogLevel.INFO, message, thrown);
     }
+
+    public void process(String message) {
+        log(EpicLogLevel.PROCESS, message);
+    }
+
+    public void process(String message, Throwable thrown) {
+        log(EpicLogLevel.PROCESS, message, thrown);
+    }
     
     public void success(String message) {
         log(EpicLogLevel.SUCCESS, message);
@@ -86,7 +94,9 @@ public class DAPILogger {
             if (level == EpicLogLevel.SUCCESS) {
                 levelColor = "[§a✓§r] ";
             } else if (level == EpicLogLevel.FAILURE) {
-                levelColor = "[§cx§r] ";
+                levelColor = "[§c×§r] ";
+            } else if (level == EpicLogLevel.PROCESS) {
+                levelColor = "[-] ";
             } else if (level == EpicLogLevel.WARNING) {
                 levelColor = "§e";
             } else if (level == EpicLogLevel.SEVERE) {

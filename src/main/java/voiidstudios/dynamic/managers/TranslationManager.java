@@ -46,7 +46,7 @@ public class TranslationManager {
         langSelected = loadYaml("messages/origins/" + langCode + ".yml");
         langCustomOverrides = loadYaml("messages/custom/custom.yml");
 
-        log.info("[-] Synchronizing language keys... ");
+        log.process("Synchronizing language keys... ");
 
         syncMissingKeys();
     }

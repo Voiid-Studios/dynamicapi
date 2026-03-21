@@ -1,35 +1,35 @@
 # ============================================================
-#  DynamicAPI — placeholders.yml
+#  DynamicAPI Placeholders
 # ============================================================
-#  Puedes crear multiples archivos .yml en esta carpeta.
-#  Cualquier archivo que tenga la seccion "Placeholders:"
-#  sera cargado automaticamente por DynamicAPI.
+#  You can create multiple .yml files in this folder.
+#  Any file containing a "Placeholders:" section will be
+#  loaded automatically by DynamicAPI.
 #
-#  Recarga con: /dapi reload
+#  Reload with: /dapi reload
 # ============================================================
 
 Placeholders:
-
   # ----------------------------------------------------------
   # %teaminfo_size_<team>%
-  # Numero de entradas del team especificado
-  # Ej: %teaminfo_size_rojo% -> 3
+  # Returns the number of entries in the specified team.
+  # Ex: %teaminfo_size_red% -> 3
   # ----------------------------------------------------------
   team_size:
     enable: true
-    prefix: 'teaminfo'
-    pattern: 'size_<team>'
-    requires_player: false
+    prefix: 'teaminfo'                    # First part of the placeholder: %teaminfo_..%
+    pattern: 'size_<team>'                # <team> is an adaptive variable captured from the placeholder name
+    requires_player: false                # Does not need a player to evaluate
     context:
-      team: 'scoreboard.getTeam(<team>)'
+      team: 'scoreboard.getTeam(<team>)'  # Fetches the Team object from the main scoreboard
     variables:
-      result: 'team.size'
+      result: 'team.size'                 # Calls team.getSize() — returns the number of entries
     returns: '{result}'
-    fallback: '0'
+    fallback: '0'                         # Returned if the team does not exist
 
   # ----------------------------------------------------------
   # %teaminfo_exists_<team>%
-  # true/false si el team existe
+  # Returns true/false depending on whether the team exists.
+  # Ex: %teaminfo_exists_red% -> true
   # ----------------------------------------------------------
   team_exists:
     enable: true
@@ -37,31 +37,31 @@ Placeholders:
     pattern: 'exists_<team>'
     requires_player: false
     context:
-      team: 'scoreboard.getTeam(<team>)'
+      team: 'scoreboard.getTeam(<team>)'  # If the team does not exist, getTeam() returns null
     variables:
-      result: 'team.name'
-    returns: 'true'
-    fallback: 'false'
+      result: 'team.name'                 # Accessed only to verify the team object is not null
+    returns: 'true'                       # If we reach this point, the team exists
+    fallback: 'false'                     # Returned if the team is null (does not exist)
 
   # ----------------------------------------------------------
   # %myteam_size%
-  # Size del team del jugador que evalua el placeholder
+  # Returns the team size of the player evaluating the placeholder.
   # ----------------------------------------------------------
   my_team_size:
     enable: true
     prefix: 'myteam'
     pattern: 'size'
-    requires_player: true
+    requires_player: true                       # Needs a player to evaluate
     context:
-      team: 'scoreboard.getPlayerTeam(player)'
+      team: 'scoreboard.getPlayerTeam(player)'  # Fetches the team the player belongs to
     variables:
       result: 'team.size'
     returns: '{result}'
-    fallback: '0'
+    fallback: '0'                               # Returned if the player is not in any team
 
   # ----------------------------------------------------------
   # %myteam_name%
-  # Nombre del team del jugador que evalua el placeholder
+  # Returns the team name of the player evaluating the placeholder.
   # ----------------------------------------------------------
   my_team_name:
     enable: true
@@ -71,6 +71,6 @@ Placeholders:
     context:
       team: 'scoreboard.getPlayerTeam(player)'
     variables:
-      result: 'team.name'
+      result: 'team.name'                       # Calls team.getName()
     returns: '{result}'
-    fallback: 'none'
+    fallback: 'none'                            # Returned if the player is not in any team
