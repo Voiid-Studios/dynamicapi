@@ -17,8 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
 public class UpdateDownloaderGithub {
-    private static final String API_URL    = "https://api.github.com/repos/Voiid-Studios/dynamicapi/releases/latest";
-    private static final String TARGET_JAR = "DynamicAPI.jar";
+    private static final String API_URL = "https://api.github.com/repos/Voiid-Studios/dynamicapi/releases/latest";
     private static final String USER_AGENT = "DynamicAPI-Updater";
 
     private final DAPILogger log;
@@ -48,22 +47,25 @@ public class UpdateDownloaderGithub {
             if (release.get("prerelease").getAsBoolean()) return false;
 
             String downloadUrl = null;
+            String assetName = null;
             for (JsonElement e : release.getAsJsonArray("assets")) {
                 JsonObject asset = e.getAsJsonObject();
-                if (asset.get("name").getAsString().equalsIgnoreCase(TARGET_JAR)) {
+                String name = asset.get("name").getAsString();
+                if (name.toLowerCase().contains("dynamicapi") && name.endsWith(".jar")) {
                     downloadUrl = asset.get("browser_download_url").getAsString();
+                    assetName = name;
                     break;
                 }
             }
 
-            if (downloadUrl == null) {
-                log.warning("Could not find " + TARGET_JAR + " in the latest release assets.");
+            if (downloadUrl == null || assetName == null) {
+                log.warning("Could not find a DynamicAPI jar in the latest release assets.");
                 return false;
             }
 
             long start = System.currentTimeMillis();
 
-            Path updateFile = Bukkit.getUpdateFolderFile().toPath().resolve(TARGET_JAR);
+            Path updateFile = Bukkit.getUpdateFolderFile().toPath().resolve(assetName);
             Files.createDirectories(updateFile.getParent());
 
             HttpURLConnection dlConn = (HttpURLConnection) new URL(downloadUrl).openConnection();
@@ -75,7 +77,7 @@ public class UpdateDownloaderGithub {
 
             long elapsed = System.currentTimeMillis() - start;
             log.success("Downloaded update in " + elapsed + "ms!");
-            log.info("DynamicAPI will update from " + updateChecker.getCurrentVersion() + " to " + updateChecker.getLatestVersion() + " on the next server restart!");
+            log.pasiveWarning("DynamicAPI will update from §6" + updateChecker.getCurrentVersion() + "§r to §9" + updateChecker.getLatestVersion() + "§r on the next server restart!");
             return true;
         } catch (Exception ex) {
             log.failure("Failed to download update: " + ex.getMessage());

@@ -6,7 +6,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class JavaLoggerImpl implements EpicPlatformLogger {
-
     private final Logger logger;
 
     public JavaLoggerImpl(Logger logger) {

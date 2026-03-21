@@ -45,10 +45,10 @@ public class UpdateChecker {
             return UpdateCheckerResult.noErrors(null);
 
         } catch (Exception ex) {
-            return UpdateCheckerResult.error();
+            return UpdateCheckerResult.error(ex.getMessage());
         }
     }
 
-    public String getLatestVersion() { return latestVersion; }
+    public String getLatestVersion()  { return latestVersion; }
     public String getCurrentVersion() { return currentVersion; }
 }

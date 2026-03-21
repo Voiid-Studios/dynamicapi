@@ -29,6 +29,7 @@ import java.util.Random;
 
 public final class DynamicAPIPlugin extends JavaPlugin {
     public String version = getDescription().getVersion();
+    public boolean isVerifiedVersion = false;
 
     private static final String DAPI_LOADED_PROPERTY = "dapi.jvm.loaded";
 
@@ -156,34 +157,61 @@ public final class DynamicAPIPlugin extends JavaPlugin {
         };
 
         String prefix = RELOAD_PREFIXES[new Random().nextInt(RELOAD_PREFIXES.length)];
-        dapiLogger.warning(" │  ⚠  " + prefix);
-        dapiLogger.warning(" │  ");
-        dapiLogger.warning(" │  Server reload detected by DynamicAPI.");
-        dapiLogger.warning(" │  This action IS NOT SUPPORTED and may therefore BREAK YOUR PLACEHOLDERS!!!");
-        dapiLogger.warning(" │  ");
-        dapiLogger.warning(" │  YOU WILL GET NO SUPPORT FOR THE PLUGIN FOR ANY ISSUES YOU ENCOUNTER AFTER");
-        dapiLogger.warning(" │  THE SERVER RELOAD!");
-        dapiLogger.warning(" │  #RestartYourServerAndNeverReloadIt");
+        dapiLogger.warning("│ ⚠  " + prefix);
+        dapiLogger.warning("│ ");
+        dapiLogger.warning("│ Server reload detected by DynamicAPI.");
+        dapiLogger.warning("│ This action IS NOT SUPPORTED and may therefore BREAK YOUR PLACEHOLDERS!!!");
+        dapiLogger.warning("│ ");
+        dapiLogger.warning("│ YOU WILL GET NO SUPPORT FOR THE PLUGIN FOR ANY ISSUES YOU ENCOUNTER AFTER");
+        dapiLogger.warning("│ THE SERVER RELOAD!");
+        dapiLogger.warning("│ #RestartYourServerAndNeverReloadIt");
     }
 
     private void checkUpdates(UpdateCheckerResult result) {
         if (result.isError()) {
             if (configManager.isUpdateNotification()) {
-                dapiLogger.failure("Could not check for updates.");
+                dapiLogger.failure("Failed to check for updates: " + result.getErrorMessage());
             }
             return;
         }
 
         String latest = result.getLatestVersion();
+        
+
         if (latest == null) return;
 
+        dapiLogger.pasiveWarning("Latest version found: §9v" + latest);
+        dapiLogger.pasiveWarning("Current version of DAPI: §6v" + version);
+
+        int comparison = compareVersions(version, latest);
+
+        if (version.contains("+")) {
+            dapiLogger.pasiveSevere("Using internal / testing version, skipping...");
+            return;
+        }
+
+        if (comparison > 0) {
+            dapiLogger.pasiveQuestion("...wait, you're running a version newer than the latest stable release?");
+            dapiLogger.pasiveSevere("Either you're a time traveler, or something went very wrong. Skipping...");
+            return;
+        }
+
+        isVerifiedVersion = true;
+
         if (configManager.isUpdateNotification() && !configManager.isAutoUpdate()) {
-            dapiLogger.info("§aA stable update for DynamicAPI §b(" + latest + ") §ais available.");
-            dapiLogger.info("§aDownload it at: https://modrinth.com/plugin/dynamicapi");
+            dapiLogger.info("§b│ ");
+            dapiLogger.info("§b│ ⚠  A stable update for DynamicAPI is available.");
+            dapiLogger.info("§b│ ");
+            dapiLogger.info("§b│ Latest version:  §f" + latest);
+            dapiLogger.info("§b│ Current version: §f" + version);
+            dapiLogger.info("§b│ ");
+            dapiLogger.info("§b│ You can download it at:");
+            dapiLogger.info("§b│ §fhttps://modrinth.com/plugin/dynamicapi");
+            dapiLogger.info("§b│ ");
         }
 
         if (configManager.isAutoUpdate()) {
-            dapiLogger.process("Auto-update enabled. Downloading v" + latest + "...");
+            dapiLogger.process("Auto-update enabled. §bDownloading " + latest + "...");
             updateDownloader.downloadUpdate();
         }
     }
@@ -226,10 +254,11 @@ public final class DynamicAPIPlugin extends JavaPlugin {
             dapiLogger.success("Registered expansion '%" + e.getKey() + "%' with " + enabledCount + " placeholder(s).");
         }
 
-        dapiLogger.success("§a" + totalEnabled + " placeholder(s) active across " + registeredExpansions.size() + " expansion(s).");
+        dapiLogger.success("§b" + totalEnabled + " placeholder(s) active across " + registeredExpansions.size() + " expansion(s).");
     }
 
     private void unregisterAll() {
+        dapiLogger.success("Unregistered " + registeredExpansions.size() + " expansion(s).");
         for (PlaceholderExpansion exp : registeredExpansions) exp.unregister();
         registeredExpansions.clear();
     }
@@ -282,6 +311,22 @@ public final class DynamicAPIPlugin extends JavaPlugin {
         String[] shifted = new String[args.length - 1];
         System.arraycopy(args, 1, shifted, 0, args.length - 1);
         return shifted;
+    }
+
+    private int compareVersions(String v1, String v2) {
+        try {
+            String[] parts1 = v1.split("[.+\\-]");
+            String[] parts2 = v2.split("[.+\\-]");
+            int len = Math.max(parts1.length, parts2.length);
+            for (int i = 0; i < len; i++) {
+                int a = i < parts1.length ? Integer.parseInt(parts1[i]) : 0;
+                int b = i < parts2.length ? Integer.parseInt(parts2[i]) : 0;
+                if (a != b) return a - b;
+            }
+            return 0;
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 
     private void dateText() { // totally useless, but cute :3

@@ -22,6 +22,7 @@ public class PlayerListener implements Listener {
         Player player = event.getPlayer();
 
         if (!plugin.getConfigManager().isUpdateNotification()) return;
+        if (!plugin.isVerifiedVersion) return;
         if (!player.isOp() && !player.hasPermission("dynamicapi.admin")) return;
 
         String latestVersion = plugin.getUpdateChecker().getLatestVersion();
@@ -30,8 +31,9 @@ public class PlayerListener implements Listener {
 
         Map<String, String> repl = new HashMap<String, String>();
         repl.put("%LATEST%", latestVersion);
+        repl.put("%CURRENT%", plugin.version);
         repl.put("%UPDATELINK%", "https://modrinth.com/plugin/dynamicapi");
 
-        plugin.getMessagesManager().sendList(player, "system.update.available", repl);
+        plugin.getMessagesManager().sendListPrefixed(player, "system.update.available", repl);
     }
 }

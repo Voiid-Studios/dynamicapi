@@ -5,6 +5,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import voiidstudios.dynamic.commands.interfaces.BukkitCmdSender;
+import voiidstudios.dynamic.commands.interfaces.CmdSender;
 import voiidstudios.dynamic.log.DAPILogger;
 
 import java.util.List;
@@ -63,6 +64,15 @@ public class MessagesManager {
         if (lines.isEmpty()) return;
         for (String line : lines) {
             sender.sendMessage(color(translations.formatRaw(line, repl)));
+        }
+    }
+
+    public void sendListPrefixed(CommandSender sender, String key, Map<String, String> repl) {
+        List<String> lines = translations.getStringList(key);
+        if (lines.isEmpty()) return;
+        for (String line : lines) {
+            String formatted = color(translations.formatRaw(line, repl));
+            sender.sendMessage(color(CmdSender.prefix) + formatted);
         }
     }
 

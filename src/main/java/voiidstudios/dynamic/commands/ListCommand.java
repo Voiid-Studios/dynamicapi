@@ -75,7 +75,7 @@ public final class ListCommand implements CommandHandler {
                 repl.put("%PREFIX%", entry.prefix);
                 repl.put("%PATTERN%", entry.pattern);
                 repl.put("%ID%", entry.id);
-                repl.put("%STATUSCOLOR%", entry.enabled ? "\u00A7a" : "\u00A7c");
+                repl.put("%STATUSCOLOR%", entry.enabled ? "§a" : "§c");
                 repl.put("%STATUS%", entry.enabled ? enabledLabel : disabledLabel);
                 msg.send(sender, "list.entry", repl);
             }

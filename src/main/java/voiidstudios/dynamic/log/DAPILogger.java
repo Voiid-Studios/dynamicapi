@@ -46,6 +46,14 @@ public class DAPILogger {
     public void process(String message, Throwable thrown) {
         log(EpicLogLevel.PROCESS, message, thrown);
     }
+
+    public void pasiveQuestion(String message) {
+        log(EpicLogLevel.PASIVE_QUESTION, message);
+    }
+
+    public void pasiveQuestion(String message, Throwable thrown) {
+        log(EpicLogLevel.PASIVE_QUESTION, message, thrown);
+    }
     
     public void success(String message) {
         log(EpicLogLevel.SUCCESS, message);
@@ -71,12 +79,28 @@ public class DAPILogger {
         log(EpicLogLevel.WARNING, message, thrown);
     }
 
+    public void pasiveWarning(String message) {
+        log(EpicLogLevel.PASIVE_WARNING, message);
+    }
+
+    public void pasiveWarning(String message, Throwable thrown) {
+        log(EpicLogLevel.PASIVE_WARNING, message, thrown);
+    }
+
     public void severe(String message) {
         log(EpicLogLevel.SEVERE, message);
     }
 
     public void severe(String message, Throwable thrown) {
         log(EpicLogLevel.SEVERE, message, thrown);
+    }
+
+    public void pasiveSevere(String message) {
+        log(EpicLogLevel.PASIVE_SEVERE, message);
+    }
+
+    public void pasiveSevere(String message, Throwable thrown) {
+        log(EpicLogLevel.PASIVE_SEVERE, message, thrown);
     }
 
 
@@ -97,10 +121,16 @@ public class DAPILogger {
                 levelColor = "[§c×§r] ";
             } else if (level == EpicLogLevel.PROCESS) {
                 levelColor = "[-] ";
+            } else if (level == EpicLogLevel.PASIVE_QUESTION) {
+                levelColor = "[§6?§r] ";
             } else if (level == EpicLogLevel.WARNING) {
                 levelColor = "§e";
+            } else if (level == EpicLogLevel.PASIVE_WARNING) {
+                levelColor = "[§9!§r] ";
             } else if (level == EpicLogLevel.SEVERE) {
                 levelColor = "§c";
+            } else if (level == EpicLogLevel.PASIVE_SEVERE) {
+                levelColor = "[§c!§r] ";
             } else {
                 levelColor = "";
             }

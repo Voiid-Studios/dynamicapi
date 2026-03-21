@@ -6,5 +6,8 @@ public enum EpicLogLevel {
     INFO,
     SUCCESS,
     FAILURE,
-    PROCESS
+    PROCESS,
+    PASIVE_QUESTION,
+    PASIVE_WARNING,
+    PASIVE_SEVERE
 }

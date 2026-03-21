@@ -1,6 +1,5 @@
 # ====== GENERIC COMMANDS ======
 command:
-  reload: "&aConfig Reloaded."
   no_permissions: "&cYou don't have permissions to use this command."
   unknown: "&cUnknown subcommand. Use /dapi help."
   help:
@@ -19,6 +18,11 @@ command:
     usage: "&cUse: /dapi disable <id>"
     not_found: "&cPlaceholder &e%ID% &cdoes not exist."
     success: "&aPlaceholder &e%ID% &adisabled."
+  reload:
+    process: "&7Reloading..."
+    success_config: "&aConfig reloaded."
+    success_messages: "&aMessages reloaded."
+    success_placeholders: "&aPlaceholders reloaded. &bRegistered %PLACEHOLDERS% placeholder(s) across %EXPANSIONS% expansion(s)."
 
 # ====== PLACEHOLDERS LIST ======
 list:
@@ -37,5 +41,10 @@ list:
 system:
   update:
     available:
-      - "&aA stable update for DynamicAPI &b(%LATEST%) &ais available."
-      - "&aYou can download it at: &e%UPDATELINK%"
+      - "&b│ ⚠ A stable update for DynamicAPI is available."
+      - "&b│ "
+      - "&b│ Latest version: &f%LATEST%"
+      - "&b│ Current version: &f%CURRENT%"
+      - "&b│ "
+      - "&b│ You can download it at:"
+      - "&b│ &f%UPDATELINK%"
