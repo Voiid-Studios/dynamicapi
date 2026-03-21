@@ -50,6 +50,10 @@ theme:
     - content.tooltips
     - content.code.copy
 
+plugins:
+  - search
+  - social
+
 extra:
   social:
     - icon: simple/modrinth

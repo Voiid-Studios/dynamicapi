@@ -1,12 +1,16 @@
+---
+description: Learn how to create your own placeholders directly from YAML with DynamicAPI, no Java knowledge required.
+---
+
 # Creating Placeholders
 
-DynamicAPI lets you define PlaceholderAPI placeholders directly in YAML, using simple expressions to access Bukkit's API — no Java required.
+DynamicAPI lets you define PlaceholderAPI placeholders directly in YAML, using simple expressions with [Bukkit's API Docs](https://hub.spigotmc.org/javadocs/bukkit/index.html) - no Java required.
 
 ---
 
 ## Where to put your placeholders
 
-All placeholder files go inside the `plugins/DynamicAPI/placeholders/` folder. You can have as many `.yml` files as you want — DynamicAPI will automatically load any file that contains a `Placeholders:` section.
+All placeholder files go inside the `plugins/DynamicAPI/placeholders/` folder. You can have as many `.yml` files as you want - DynamicAPI will automatically load any file that contains a `Placeholders:` section.
 
 ```
 plugins/DynamicAPI/placeholders/
@@ -26,7 +30,7 @@ Every placeholder follows this structure:
 ```yaml
 Placeholders:
 
-  my_placeholder:               # Internal ID — used in /dapi enable, /dapi disable and /dapi list
+  my_placeholder:               # Internal ID - used in /dapi enable, /dapi disable and /dapi list
     enable: true                # true to activate, false to deactivate
     prefix: 'myplugin'          # First part of the placeholder: %myplugin_..%
     pattern: 'something'        # Second part: %myplugin_something%
@@ -35,7 +39,7 @@ Placeholders:
       myobj: 'expression'
     variables:                  # Final values to extract
       result: 'expression'
-    returns: '{result}'         # What the placeholder returns — use {varname} to interpolate
+    returns: '{result}'         # What the placeholder returns, use {varname} to interpolate
     fallback: '0'               # Returned if anything in the chain is null
 ```
 
@@ -148,7 +152,7 @@ dapi_team_exists:
 
 1.  Fetches the Team object. If the team doesn't exist, `getTeam()` returns `null` and the fallback is triggered.
 2.  We access `team.name` just to verify the object is not null. The actual value is discarded.
-3.  If we reach `returns`, it means the team exists — so we always return the literal `"true"`. If anything was null, the `fallback: 'false'` would have been returned instead.
+3.  If we reach `returns`, it means the team exists - so we always return the literal `"true"`. If anything was null, the `fallback: 'false'` would have been returned instead.
 
 **Usage:** `%dapi_team_exists_studios%` -> `true`
 
@@ -309,7 +313,7 @@ dapi_essentials_balance:
 
 1.  Retrieves the EssentialsX plugin instance via the Bukkit PluginManager. If EssentialsX is not installed this returns `null` and the fallback is triggered.
 2.  Fetches the EssentialsX `User` object for the evaluating player: https://jd.essentialsx.net/
-3.  Calls `user.getMoney()` which returns the player's balance as a `BigDecimal`. Since `getPlugin()` returns a generic `Plugin` object, DynamicAPI accesses this through reflection — no direct API dependency needed.
+3.  Calls `user.getMoney()` which returns the player's balance as a `BigDecimal`. Since `getPlugin()` returns a generic `Plugin` object, DynamicAPI accesses this through reflection - no direct API dependency needed.
 
 **Usage:** `%dapi_eco_balance%` -> `15420.50`
 

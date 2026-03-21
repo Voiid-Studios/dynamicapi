@@ -2,7 +2,7 @@
 
 ![dwiki_logo](assets/img/dwiki-logo.png){ align="center" }
 
-**DynamicAPI** is a [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI) addon that lets you create your own custom placeholders directly from YAML files — no Java knowledge required.
+**DynamicAPI** is a [PlaceholderAPI](https://modrinth.com/plugin/placeholderapi) addon that lets you create your own custom placeholders directly from YAML files, no Java knowledge required.
 
 Instead of searching through eCloud's thousands of expansions and never finding exactly what you need, DynamicAPI lets you define your own placeholders in minutes.
 
@@ -16,9 +16,11 @@ Instead of searching through eCloud's thousands of expansions and never finding 
 
     Everything you need to get started with DynamicAPI as a server admin.
 
-    - [:octicons-chevron-right-16: Installation](users/installation)
-    - [:octicons-chevron-right-16: Commands](users/commands)
-    - [:octicons-chevron-right-16: Creating Placeholders](users/creating-placeholders)
+    [:octicons-chevron-right-16: Installation](users/installation)
+
+    [:octicons-chevron-right-16: Commands](users/commands)
+
+    [:octicons-chevron-right-16: Creating Placeholders](users/creating-placeholders)
 
 -   ### :material-chat-question: FAQ
 
@@ -26,7 +28,7 @@ Instead of searching through eCloud's thousands of expansions and never finding 
 
     Frequently asked questions and their answers.
 
-    - [:octicons-chevron-right-16: Jump to Page](faq)
+    [:octicons-chevron-right-16: Jump to Page](faq)
 
 </div>
 

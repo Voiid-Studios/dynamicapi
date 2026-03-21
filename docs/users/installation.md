@@ -1,3 +1,7 @@
+---
+description: How to install DynamicAPI on your server and what requirements you need.
+---
+
 # Installation
 
 ## Requirements

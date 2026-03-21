@@ -1,3 +1,7 @@
+---
+description: All available commands in DynamicAPI and their permissions.
+---
+
 # Commands
 
 All DynamicAPI commands use the `/dapi` alias (or `/dynamicapi`).
@@ -35,8 +39,8 @@ Use this after editing any `.yml` file in the `placeholders/` folder to apply yo
 ### `/dapi list`
 Lists all placeholders that DynamicAPI has loaded, including both enabled and disabled ones.
 
-- :material-check-circle:{ style="color: green" } **Green** — placeholder is active and registered in PlaceholderAPI
-- :material-close-circle:{ style="color: red" } **Red** — placeholder is defined but currently disabled
+- :material-check-circle:{ style="color: green" } **Green** - placeholder is active and registered in PlaceholderAPI
+- :material-close-circle:{ style="color: red" } **Red** - placeholder is defined but currently disabled
 
 **Permission:** `dynamicapi.list`
 

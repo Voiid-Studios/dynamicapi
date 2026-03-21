@@ -1,3 +1,7 @@
+---
+description: Frequently asked questions about DynamicAPI and their answers.
+---
+
 # FAQ
 
 Frequently asked questions about DynamicAPI.
@@ -6,13 +10,13 @@ Frequently asked questions about DynamicAPI.
 
 ### Do I need to know Java to use DynamicAPI?
 
-Not at all. DynamicAPI is specifically designed so that anyone who can read [Bukkit's JavaDocs](https://hub.spigotmc.org/javadocs/bukkit/index.html) can create placeholders using simple YAML expressions — no programming experience required.
+Not at all. DynamicAPI is specifically designed so that anyone who can read [Bukkit's API Docs](https://hub.spigotmc.org/javadocs/bukkit/index.html) can create placeholders using simple YAML expressions, no programming experience required.
 
 ---
 
 ### Does DynamicAPI replace PlaceholderAPI?
 
-No. DynamicAPI is a **complement** to PlaceholderAPI, not a replacement. It depends on PAPI to work, and all placeholders you define through DynamicAPI are registered directly into PlaceholderAPI — just like any other expansion.
+No. DynamicAPI is a **complement** to PlaceholderAPI, not a replacement. It depends on PAPI to work, and all placeholders you define through DynamicAPI are registered directly into PlaceholderAPI - just like any other expansion.
 
 ---
 

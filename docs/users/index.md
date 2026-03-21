@@ -1,3 +1,7 @@
+---
+description: Pages aimed at server owners who want to utilize DynamicAPI.
+---
+
 # User Guides
 
 Welcome to the DynamicAPI user guides. These pages cover everything you need to know to install, configure, and use DynamicAPI on your server.
@@ -8,7 +12,7 @@ Welcome to the DynamicAPI user guides. These pages cover everything you need to 
 
     ----
 
-    How to install DynamicAPI on your server.
+    How to install DynamicAPI on your server and what requirements you need.
 
     [:octicons-chevron-right-16: Jump to Page](installation)
 
@@ -16,7 +20,7 @@ Welcome to the DynamicAPI user guides. These pages cover everything you need to 
 
     ----
 
-    All available commands and their usage.
+    All available commands in DynamicAPI and their permissions.
 
     [:octicons-chevron-right-16: Jump to Page](commands)
 
@@ -24,7 +28,7 @@ Welcome to the DynamicAPI user guides. These pages cover everything you need to 
 
     ----
 
-    Learn how to create your own placeholders using YAML.
+    Learn how to create your own placeholders directly from YAML.
 
     [:octicons-chevron-right-16: Jump to Page](creating-placeholders)
 
