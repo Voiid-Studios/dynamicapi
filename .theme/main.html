@@ -27,12 +27,11 @@
   
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ page.canonical_url }}">
-  <meta property="og:image" content="{{ config.site_url | url }}assets/img/favicons/android-chrome-512x512.png">
+  <meta property="og:image" content="{{ image.url if image is defined else config.site_url ~ 'assets/img/favicons/android-chrome-512x512.png' }}">
   <meta property="og:image:type" content="image/png">
   
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:creator" content="Chaos League Wiki Team">
-  <meta name="twitter:image" content="{{ config.site_url | url }}assets/img/favicons/android-chrome-512x512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ image.url if image is defined else config.site_url ~ 'assets/img/favicons/android-chrome-512x512.png' }}">
   
   <link rel="apple-touch-icon" sizes="180x180" href="{{ config.site_url | url }}assets/img/favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ config.site_url | url }}assets/img/favicons/favicon-32x32.png">
