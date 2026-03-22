@@ -50,12 +50,6 @@ theme:
     - content.tooltips
     - content.code.copy
 
-plugins:
-  - search
-  - social:
-      cards_layout_dir: layouts
-      cards_layout: custom
-
 extra:
   social:
     - icon: simple/modrinth
