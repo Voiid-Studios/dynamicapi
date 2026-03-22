@@ -52,7 +52,9 @@ theme:
 
 plugins:
   - search
-  - social
+  - social:
+      cards_layout_dir: layouts
+      cards_layout: custom
 
 extra:
   social:
