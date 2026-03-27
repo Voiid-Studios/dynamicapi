@@ -4,5 +4,6 @@
 server/
 build/
 bin/
+gradle/
 out/
 *.iml
