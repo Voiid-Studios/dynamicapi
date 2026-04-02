@@ -206,7 +206,7 @@ public final class DynamicAPIPlugin extends JavaPlugin {
             dapiLogger.info("§b│ Current version: §f" + version);
             dapiLogger.info("§b│ ");
             dapiLogger.info("§b│ You can download it at:");
-            dapiLogger.info("§b│ §fhttps://modrinth.com/plugin/dynamicapi");
+            dapiLogger.info("§b│ §fhttps://github.com/Voiid-Studios/dynamicapi/releases/latest");
             dapiLogger.info("§b│ ");
         }
 

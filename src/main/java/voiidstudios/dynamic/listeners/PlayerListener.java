@@ -32,7 +32,7 @@ public class PlayerListener implements Listener {
         Map<String, String> repl = new HashMap<String, String>();
         repl.put("%LATEST%", latestVersion);
         repl.put("%CURRENT%", plugin.version);
-        repl.put("%UPDATELINK%", "https://modrinth.com/plugin/dynamicapi");
+        repl.put("%UPDATELINK%", "https://github.com/Voiid-Studios/dynamicapi/releases/latest");
 
         plugin.getMessagesManager().sendListPrefixed(player, "system.update.available", repl);
     }
