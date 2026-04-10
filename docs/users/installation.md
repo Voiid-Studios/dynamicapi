@@ -20,7 +20,12 @@ Before installing DynamicAPI, make sure your server meets the following requirem
 
 ## Steps
 
-**1.** Download the latest version of DynamicAPI from [Modrinth](https://modrinth.com/plugin/dynamicapi).
+**1.** Download the latest version of DynamicAPI from an official source:
+
+[![Alternative](https://raw.githubusercontent.com/Voiid-Studios/voiidstudios/main/assets/buttons/alternative_cozy.svg "Browse builds in Alternative")](https://alternative-ui.pages.dev/projects/dapi)
+[![Modrinth](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg "Download on Modrinth")](https://modrinth.com/plugin/dynamicapi)
+[![Hangar](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/hangar_vector.svg "Download on Hangar")](https://hangar.papermc.io/VoiidStudios/DynamicAPI)
+[![SpigotMC](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/spigot_vector.svg "Download on SpigotMC")](https://spigotmc.org/resources/133873/)
 
 **2.** Place the downloaded `.jar` file inside your server's `plugins/` folder.
 
