@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'voiidstudios.dynamic'
-version = '26.03.1' // YY.MM.PATCH
+version = '26.04.0' // YY.MM.PATCH
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8

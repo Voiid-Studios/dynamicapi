@@ -7,10 +7,12 @@ Stop searching the eCloud. Start creating your own PlaceholderAPI placeholders.
 
 [![Kofi](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/donate/kofi-plural_vector.svg "Support us on Ko-fi")](https://ko-fi.com/maxxvoiid/donate)
 [![Modrinth](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg "Download on Modrinth")](https://modrinth.com/plugin/dynamicapi)
-[![Hangar](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/hangar_vector.svg "Download on Hangar")](https://hangar.papermc.io/VoiidStudios/DynamicAPI)
+[![Alternative](https://raw.githubusercontent.com/Voiid-Studios/voiidstudios/main/assets/buttons/alternative_cozy.svg "Browse builds in Alternative")](https://alternative-ui.pages.dev/projects/dapi)
+[![Hangar](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy-minimal/available/hangar_vector.svg "Download on Hangar")](https://hangar.papermc.io/VoiidStudios/DynamicAPI)
+[![SpigotMC](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy-minimal/supported/spigot_vector.svg "Download on SpigotMC")](https://spigotmc.org/resources/133873/)
 
 [![DWiki](https://raw.githubusercontent.com/Voiid-Studios/dynamicapi/wiki/docs/assets/img/external/dwiki_compact.svg "Read the DynamicAPI Wiki")](https://voiid-studios.github.io/dynamicapi/)
-[![VSPL](https://raw.githubusercontent.com/Voiid-Studios/voiidstudios/main/vspl_license.svg "View the Voiid Studios Public License")](https://github.com/Voiid-Studios/voiidstudios/blob/main/LICENSE.md)
+[![VSPL](https://raw.githubusercontent.com/Voiid-Studios/voiidstudios/main/assets/buttons/vspl_license.svg "View the Voiid Studios Public License")](https://github.com/Voiid-Studios/voiidstudios/blob/main/LICENSE.md)
 [![Crowdin](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact-minimal/translate/crowdin_vector.svg "Translate DAPI on Crowdin")](https://crowdin.com/project/dynamicapi)
 [![GitHub](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact-minimal/available/github_vector.svg "View DAPI Source Code on GitHub")](https://github.com/Voiid-Studios/dynamicapi)
 
@@ -38,7 +40,7 @@ Instead of searching through eCloud's thousands of expansions and never finding 
 
 ## 🚀 Installation
 
-1. Download the [latest version here](https://modrinth.com/plugin/dynamicapi)
+1. Download the [latest version here](https://github.com/Voiid-Studios/dynamicapi/releases/latest)
 2. Place the downloaded `.jar` file in your server's `plugins/` folder
 3. Make sure [PlaceholderAPI](https://www.spigotmc.org/resources/6245/) is also installed
 4. Restart the server, DynamicAPI is ready! ⚡
